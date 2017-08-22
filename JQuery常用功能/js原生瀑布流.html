@@ -1,0 +1,189 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>js纯原生手写瀑布流-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<style>
+ * {
+	margin:0;
+	padding:0;
+}
+#main {
+	position:relative;
+	height:auto;
+	margin:0 auto;
+}
+.box {
+	padding:10px 0 0 10px;
+	float:left;
+	/*height:auto;
+	*/
+}
+.pic {
+	padding:10px;
+	border-radius:5px;
+	border:1px solid #ccc;
+	box-shadow:0 0 3px #ccc;
+	/*height:auto;
+	*/
+}
+.pic img {
+	width:200px;
+	height:auto;
+}
+</style>
+</head>
+<body>
+<div id="main">
+    <div class="box">
+        <div class="pic">
+            <img src="http://www.jq22.com/img/cs/300x500-1.png" alt="">
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="http://www.jq22.com/img/cs/500x500-2.png" alt="">
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="http://www.jq22.com/img/cs/500x500-3.png" alt="">
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="http://www.jq22.com/img/cs/300x500-1.png" alt="">
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="http://www.jq22.com/img/cs/500x500-5.png" alt="">
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="http://www.jq22.com/img/cs/300x500-1.png" alt="">
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="http://www.jq22.com/img/cs/500x500-2.png" alt="">
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="http://www.jq22.com/img/cs/300x500-1.png" alt="">
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="http://www.jq22.com/img/cs/500x500-4.png" alt="">
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="http://www.jq22.com/img/cs/300x500-1.png" alt="">
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="http://www.jq22.com/img/cs/500x500-1.png" alt="">
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="http://www.jq22.com/img/cs/300x500-1.png" alt="">
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="http://www.jq22.com/img/cs/500x500-3.png" alt="">
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="http://www.jq22.com/img/cs/300x500-1.png" alt="">
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="http://www.jq22.com/img/cs/500x500-5.png" alt="">
+        </div>
+    </div>
+</div><script>
+ window.onload = function() {
+     water();
+
+ }
+
+ function water() {
+     //        获取一下大盒子
+     var main = document.getElementById("main");
+     //        获取每个小盒子，因为有兼容，所以写个函数，函数在下面
+     var boxs = getByClass(main, "box");
+     //        获取屏幕宽，也有兼容
+     var clientW = document.body.clientWidth || document.documentElement.clientWidth;
+     //        获取每个小盒子的宽，因为宽度都一样，获取第一个的就行
+     var boxW = boxs[0].offsetWidth;
+     //        算一下得几列就好，因为可能算出小数，所以向下取整
+     var cols = Math.floor(clientW / boxW);
+     //        给大盒子设置宽度
+     main.style.width = cols * boxW + 'px';
+
+     //        来一个数组，这个数组里面存放前6个盒子的高度
+     var hArr = [];
+     for (var i = 0; i < boxs.length; i++) {
+         if (i < cols) {
+             //                存放前六个高度
+             hArr.push(boxs[i].offsetHeight);
+         } else {
+             //                因为第七个要给前六个最短小的哪个下面放，所以要获取一下前六的最小高度
+             var minH = Math.min.apply(null, hArr);
+             //                获取这个最小的高度属于前六个的第几个
+             var minIndex = getIndex(minH, hArr);
+             //                给第七个设置位置
+             boxs[i].style.position = "absolute";
+             boxs[i].style.top = minH + 'px';
+             boxs[i].style.left = boxW * minIndex + 'px';
+             //                因为第八个和第七个一样，所以把哪个高度更新一下
+             hArr[minIndex] += boxs[i].offsetHeight;
+         }
+     }
+ }
+
+ function getIndex(val, arr) {
+     for (var i = 0; i < arr.length; i++) {
+         if (arr[i] == val) {
+             return i;
+         }
+     }
+ }
+
+
+
+ function getByClass(parent, className) {
+     var arr = [];
+     var eles = parent.getElementsByTagName("*");
+     for (var i = 0; i < eles.length; i++) {
+         if (eles[i].className == className) {
+             arr.push(eles[i])
+         }
+     }
+     return arr;
+ }
+
+ function checkScroll() {
+     var main = document.getElementById("main");
+     var boxs = getByClass(main, "box");
+     var h = boxs[boxs.length - 1].offsetTop + boxs[boxs.length - 1].offsetHeight / 2;
+     var bh = document.body.scrollTop || document.documentElement.scrollTop;
+     var ch = document.body.clientHeight || document.documentElement.clientHeight;
+     if (h < bh + ch) {
+         return true;
+     } else {
+         return false;
+     }
+ }</script>
+</body>
+</html>

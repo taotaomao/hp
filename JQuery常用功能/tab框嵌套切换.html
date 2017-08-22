@@ -1,0 +1,158 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>tab切换中套tab切换-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+<style>
+body,ul,li,div,a {
+	margin:0px;
+	padding:0px;
+}
+body {
+	margin-top:10px;
+	margin-left:15px;
+}
+#all {
+	border-left:1px solid #ccc;
+	border-right:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+	width:255px;
+}
+#title li {
+	float:left;
+	list-style:none;
+	width:50px;
+	border-top:2px solid #f60;
+	border-right:1px solid #ccc;
+	text-align:center;
+	padding-top:3px;
+}
+#title li:last-child {
+	border-right:1px solid #fff;
+}
+.new {
+	border-bottom:1px solid #fff;
+	color:#f60;
+}
+.old {
+	border-bottom:1px solid #ccc;
+}
+#content {
+	clear:both;
+}
+#content ul {
+	margin-left:5px;
+	list-style:none;
+	float:left;
+}
+#content li {
+	width:40px;
+	height:30px;
+	background-color:#f60;
+	text-align:center;
+	color:#fff;
+}
+.inContent {
+	width:205px;
+	height:90px;
+	background-color:#f6c;
+	margin-left:50px;
+}
+</style>
+</head>
+<body>
+<div id="all">
+    <div id="title">
+        <ul>
+            <li>要闻</li>
+            <li>国内</li>
+            <li>时尚</li>
+            <li>旅游</li>
+            <li>科技</li>
+        </ul>
+    </div>
+    <div id="content">
+        <div style="clear:both;" class="info">
+            <ul>
+                <li>01</li>
+                <li>02</li>
+                <li>03</li>
+            </ul>
+            <div>
+                <div class="inContent">1aaa看你是些在li标签里面还是些在li 的a标签里面如果是1aaa</div>
+                <div class="inContent">1bbb看你是些在li标签里面还是些在li 的a标签里面如果是1bbb</div>
+                <div class="inContent">1ccc看你是些在li标签里面还是些在li 的a标签里面如果是1ccc</div>
+            </div>
+        </div>
+        <div class="info">
+            <ul>
+                <li>01</li>
+                <li>02</li>
+                <li>03</li>
+            </ul>
+            <div>
+                <div class="inContent">2aaa看你是些在li标签里面还是些在li 的a标签里面如果是1aaa</div>
+                <div class="inContent">2bbb看你是些在li标签里面还是些在li 的a标签里面如果是1bbb</div>
+                <div class="inContent">2ccc看你是些在li标签里面还是些在li 的a标签里面如果是1ccc</div>
+            </div>
+        </div>
+        <div class="info">
+            <ul>
+                <li>01</li>
+                <li>02</li>
+                <li>03</li>
+            </ul>
+            <div>
+                <div class="inContent">3aaa看你是些在li标签里面还是些在li 的a标签里面如果是3aaa</div>
+                <div class="inContent">3bbb看你是些在li标签里面还是些在li 的a标签里面如果是3bbb</div>
+                <div class="inContent">3ccc看你是些在li标签里面还是些在li 的a标签里面如果是3ccc</div>
+            </div>
+        </div>
+        <div class="info">
+            <ul>
+                <li>01</li>
+                <li>02</li>
+                <li>03</li>
+            </ul>
+            <div>
+                <div class="inContent">4aaa看你是些在li标签里面还是些在li 的a标签里面如果是4aaa</div>
+                <div class="inContent">4bbb看你是些在li标签里面还是些在li 的a标签里面如果是4bbb</div>
+                <div class="inContent">4ccc看你是些在li标签里面还是些在li 的a标签里面如果是4ccc</div>
+            </div>
+        </div>
+        <div class="info">
+            <ul>
+                <li>01</li>
+                <li>02</li>
+                <li>03</li>
+            </ul>
+            <div>
+                <div class="inContent">5aaa看你是些在li标签里面还是些在li 的a标签里面如果是5aaa</div>
+                <div class="inContent">5bbb看你是些在li标签里面还是些在li 的a标签里面如果是5bbb</div>
+                <div class="inContent">5ccc看你是些在li标签里面还是些在li 的a标签里面如果是5ccc</div>
+            </div>
+        </div>
+    </div>
+</div><script>
+$(function() {
+    $("#title li:first").addClass("new").siblings().addClass("old");
+    $("#content div:first").show().siblings().hide();
+    $(".inContent:first").show().siblings().hide();
+    $("#title li").click(function() {
+        $(this).addClass("new").removeClass("old").siblings().addClass("old").removeClass("new");
+        $(".info").hide().eq($("#title li").index(this)).show();
+        $(".info div:first-child").show().siblings().hide();
+    });
+
+    $(".info li").mouseover(function() {
+        $(this).css("color", "#20f");
+        $(".inContent").hide().eq($(".info li").index(this)).show();
+    });
+    $(".info li").mouseout(function() {
+        $(this).css("color", "#fff");
+    });
+
+});</script>
+</body>
+</html>

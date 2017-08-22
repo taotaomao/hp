@@ -1,0 +1,59 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>简单jQ星级评价-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<style>
+body {
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	flex-direction:column;
+}
+.rating {
+	direction:rtl;
+	width:125px;
+	margin:20px;
+}
+.rating > span.s {
+	display:inline-block;
+	position:relative;
+	width:1.5em;
+}
+.rating > span.s:hover:before,.rating > span.s:hover ~ span.s:before {
+	content:"\2605";
+	color:red;
+	position:absolute;
+}
+span.reds:before {
+	content:"\2605";
+	color:red;
+	position:absolute;
+}
+</style>
+</head>
+<body>
+<div class="rating">
+    <span class="s">☆</span><span class="s">☆</span><span class="s">☆</span><span class="s">☆</span><span class="s">☆</span>
+</div>
+<div class="rating">
+    <span class="s">☆</span><span class="s">☆</span><span class="s">☆</span><span class="s">☆</span><span class="s">☆</span>
+</div>
+<div class="rating">
+    <span class="s">☆</span><span class="s">☆</span><span class="s">☆</span><span class="s">☆</span><span class="s">☆</span>
+</div>
+<div class="rating">
+    <span class="s">☆</span><span class="s">☆</span><span class="s">☆</span><span class="s">☆</span><span class="s">☆</span>
+</div><script>
+$(function() {
+    $('span').click(function() {
+        $(this).siblings().each(function() {
+            $(this).removeClass('reds');
+        })
+        $(this).addClass('reds');
+        $(this).nextAll().addClass('reds');
+    })
+})</script>
+</body>
+</html>

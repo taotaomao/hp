@@ -1,0 +1,64 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>滑动导航菜单-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<style>
+* {
+	list-style:none;
+	padding:0;
+	margin:0;
+	text-decoration:none;
+}
+.menu {
+	position:relative;
+	background-color:#fafafa;
+	overflow:hidden;
+}
+.menu li {
+	position:relative;
+	float:left;
+	width:100px;
+	height:50px;
+	text-align:center;
+	line-height:50px;
+	/*background-color:transparent;
+	*/
+}
+.bg {
+	height:100%;
+	background:rgba(236,108,0,1);
+	position:absolute;
+	top:0;
+	left:0;
+	overflow:hidden;
+	height:50px;
+	width:100px;
+}
+</style>
+</head>
+<body>
+<ul class="menu">
+    <div class="bg">
+        <a href="#"></a>
+    </div>
+    <li><a href="#">首页</a></li>
+    <li><a href="#">菜单1</a></li>
+    <li><a href="#">菜单2</a></li>
+    <li><a href="#">菜单3</a></li>
+    <li><a href="#">菜单4</a></li>
+</ul><script>
+$('.menu').on('mouseover', 'li', function() {
+    var index = $(this).index() - 1;
+    $('.bg').animate({
+        marginLeft: 100 * index
+    }, 100);
+});
+$('.menu').mouseleave(function() {
+    $('.bg').animate({
+        marginLeft: 0
+    }, 400);
+})</script>
+</body>
+</html>

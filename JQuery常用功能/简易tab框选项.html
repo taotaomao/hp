@@ -1,0 +1,94 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>常用tab选项卡代码-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<style>
+ * {
+	padding:0;
+	margin:0;
+}
+body {
+	font-size:12px;
+	padding:100px;
+}
+ul {
+	list-style-type:none;
+}
+.box ul {
+	height:50px;
+	line-height:30px;
+}
+.box ul li {
+	float:left;
+	padding: 10px 30px;
+	position:relative;
+	cursor:pointer;
+	border:1px solid #0160c8;
+	margin-right:5px;
+	border-bottom:none;
+}
+.box ul li.two {
+	background:#0160c8;
+}
+.content {
+	width:600px;
+	border: 1px solid #0160c8;
+	padding:10px;
+	height: 500px;
+}
+.ct{
+	line-height: 50px;
+	font-size: 16px;
+}
+* html .content {
+	margin-top:-1px;
+}
+.box ul li.one {
+	background:#fff;
+}
+</style>
+</head>
+<body>
+<div class="box">
+    <ul>
+        <li class="one">课程介绍</li>
+        <li>报名流程</li>
+        <li>常见问题</li>
+    </ul>
+    <div class="content">
+        <div class="ct">申请条件：28岁以下，具备中等以上学历，简单的计算机操作基础，热爱IT行业。
+ 		安置就业保障：
+ 
+实训合格后，直输千企联盟中的公司就业；未合格者，免费重修直至就业。
+ 
+课程设置：计算机基础知识，Windows XP操作系统 ，Office办公自动化处理软件，计算机网络基础知识，计算机常用工具及相关技巧，计算机信息安全，网络美工训练，网页图形处理，网页专业设计软件应用等课程。计算机基础知识计算机基础知识
+ 
+颁发学历证书：
+ 
+二年制毕业并取得实习合格报告者，可获得民办大学本科学历证书(该学历可办理学历公证)。
+ 
+ 申请事项：
+ 
+1. 申请时须携带本人学历证明、身份证、两寸彩色照片四张。
+ 
+2. 申请者进行综合素质测评笔试、面试。</div>
+        <div class="ct">在jQuery迅速发展的同时，一些大的厂商也看中了商机。2009年9月，微软和诺基亚公司正式宣布支持开源的jQuery库，另外，微软公司还宣称他们将把jQuery作为Visual Studio工具集的一部分。 </div>
+        <div class="ct">2010年1月，也是jQuery的四周年生日，jQuery 1.4版发布，为了庆祝jQuery四周岁生日，jQuery团队特别创建了jquery14.com站点，带来了连续14天的新版本专题介绍。 </div>
+    </div>
+</div><script>
+$(document).ready(function() {
+    $('.ct:gt(0)').hide();
+    var hdw = $('.box ul li');
+    hdw.hover(function() {
+        $(this).addClass('two').siblings().removeClass('two');
+    });
+    hdw.click(function() {
+        $(this).addClass('one').siblings().removeClass();
+        var hdw_index = hdw.index(this);
+        $('.ct').eq(hdw.index(this)).show().siblings().hide();
+    });
+});</script>
+</body>
+</html>

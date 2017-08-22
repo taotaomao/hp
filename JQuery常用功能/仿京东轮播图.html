@@ -1,0 +1,188 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>仿京东js轮播图-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<style>
+* {
+	padding:0;
+	margin:0;
+}
+.box {
+	width:500px;
+	height:400px;
+	margin:20px auto;
+	position:relative;
+	border:1px solid #ccc;
+}
+a {
+	display:none;
+	width:500px;
+	height:400px;
+	color:#fff;
+	text-align:center;
+	font:700 100px/400px "simsun";
+}
+ul {
+	position:absolute;
+	bottom:30px;
+	left:50%;
+	list-style:none;
+	margin-left:-55px;
+}
+li {
+	float:left;
+	width:18px;
+	height:18px;
+	background-color:black;
+	margin:0 2px;
+	cursor:move;
+	border-radius:9px;
+	color:#fff;
+	text-align:center;
+	line-height:18px;
+}
+.arrow span {
+	position:absolute;
+	top:50%;
+	width:38px;
+	height:60px;
+	color:#fff;
+	text-decoration:none;
+	font:700 36px/60px "simsun";
+	text-align:center;
+	background:rgba(0,0,0,.3);
+	margin-top:-30px;
+	cursor:pointer;
+}
+#arrow-l {
+	left:0;
+}
+#arrow-r {
+	right:0;
+}
+.arrow span:hover {
+	background:rgba(0,0,0,.8);
+}
+.current {
+	background-color:red;
+}
+.show {
+	display:block;
+}
+</style>
+</head>
+<body>
+<div class="box" id="box">
+    <a href="#" class="show" style="background-color: pink">1</a>
+    <a href="#" style="background-color: blue">2</a>
+    <a href="#" style="background-color: purple">3</a>
+    <a href="#" style="background-color: green">4</a>
+    <a href="#" style="background-color: yellow">5</a>
+
+    <ul>
+        <li class="current">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+    <div class="arrow">
+        <span href="#" id="arrow-l">&lt;</span>
+        <span href="#" id="arrow-r">&gt;</span>
+    </div>
+</div><script>
+ var aArr = document.getElementsByTagName("a");
+ var liArr = document.getElementsByTagName("li");
+ var spArr = document.getElementsByTagName("span");
+ var box = document.getElementById("box");
+
+ var count = 0;
+
+ spArr[1].onclick = fn1;
+
+
+
+ spArr[0].onclick = fn2;
+
+
+
+ var timer = setInterval(fn1, 1000);
+
+ box.onmouseover = function() {
+     clearInterval(timer);
+ }
+
+ box.onmouseout = function() {
+     timer = setInterval(fn1, 1000);
+ }
+
+
+
+ for (var i = 0; i < liArr.length; i++) {
+     liArr[i].onclick = fn3;
+ }
+
+
+
+
+
+
+ function fn1() {
+
+     count++;
+
+     if (count === aArr.length) {
+         count = 0;
+     }
+
+
+     for (var i = 0; i < aArr.length; i++) {
+
+         aArr[i].className = "";
+
+         liArr[i].className = "";
+     }
+
+     aArr[count].className = "show";
+     liArr[count].className = "current";
+ }
+
+
+ function fn2() {
+
+     count--;
+
+     if (-1 == count) {
+         count = aArr.length - 1;
+     }
+
+
+     for (var i = 0; i < aArr.length; i++) {
+
+         aArr[i].className = "";
+
+         liArr[i].className = "";
+     }
+
+     aArr[count].className = "show";
+     liArr[count].className = "current";
+ }
+
+
+ function fn3() {
+
+     for (var i = 0; i < aArr.length; i++) {
+
+         aArr[i].className = "";
+
+         liArr[i].className = "";
+     }
+
+     aArr[this.innerHTML - 1].className = "show";
+     liArr[this.innerHTML - 1].className = "current";
+ }</script>
+</body>
+</html>

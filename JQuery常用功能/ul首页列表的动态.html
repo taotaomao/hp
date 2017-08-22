@@ -1,0 +1,85 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>css3导航条-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<style>
+* {
+	margin:0;
+	padding:0;
+}
+li {
+	list-style:none;
+}
+a {
+	text-decoration:none;
+}
+.nav {
+	width:100%;
+	float:left;
+}
+.nav ul li {
+	float:left;
+}
+.nav ul li a {
+	position:relative;
+	z-index:2;
+	font-size:14px;
+	color:#666666;
+	text-align:center;
+	line-height:46px;
+	display:inline-block;
+	width:88px;
+	height:46px;
+	transition:all .4s;
+	-moz-transition:all .4s;
+	-webkit-transition:all .4s;
+	-o-transition:all .4s;
+}
+.nav ul li a:hover {
+	color:#ffffff !important;
+}
+.nav ul li a:hover:after {
+	opacity:1;
+	transform:scale(1);
+}
+.active {
+	color:#ffffff !important;
+}
+.active:after {
+	transform:scale(1) !important;
+	opacity:1 !important;
+}
+.nav-a:after {
+	content:'';
+	position:absolute;
+	z-index:-1;
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+	background-color:#319a51;
+	transition:all .4s;
+	-moz-transition:all .4s;
+	-webkit-transition:all .4s;
+	-o-transition:all .4s;
+	opacity:0;
+	transform:scale(0);
+}
+</style>
+</head>
+<body>
+<div class="nav">
+    <ul>
+        <li><a href="#" class="nav-a active">首页</a></li>
+        <li><a href="#" class="nav-a">网站列表</a></li>
+        <li><a href="#" class="nav-a">网站新闻</a></li>
+        <li><a href="#" class="nav-a">网站动态</a></li>
+        <li><a href="#" class="nav-a">视频专区</a></li>
+        <li><a href="#" class="nav-a">关于我们</a></li>
+    </ul>
+</div><script>
+</script>
+</body>
+</html>

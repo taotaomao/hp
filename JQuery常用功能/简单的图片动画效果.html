@@ -1,0 +1,147 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>四种简单的动画效果-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<style>
+div {
+	width:200px;
+	height:200px;
+	margin:100px;
+	background:#ddd;
+	border:1px solid #ccc;
+	border-radius:50%;
+	text-align:center;
+	line-height:200px;
+	font-size:12px;
+	font-family:"微软雅黑";
+	float:left;
+	margin-right:30px;
+	margin-top:30px;
+}
+/*闪光灯动画开始*/
+.light {
+	-webkit-animation:lightAnimate 1s ease infinite;
+	-moz-animation:lightAnimate 1s ease infinite;
+	-o-animation:lightAnimate 1s ease infinite;
+	-ms-animation:lightAnimate 1s ease infinite;
+	animation:lightAnimate 2s ease infinite;
+}
+@-webkit-keyframes lightAnimate {
+	0%,50%,100% {
+	opacity:1;
+}
+25%,75% {
+	opacity:0;
+}
+}@-moz-keyframes lightAnimate {
+	0%,50%,100% {
+	opacity:1;
+}
+25%,75% {
+	opacity:0;
+}
+}@-p-keyframes lightAnimate {
+	0%,50%,100% {
+	opacity:1;
+}
+25%,75% {
+	opacity:0;
+}
+}@-ms-keyframes lightAnimate {
+	0%,50%,100% {
+	opacity:1;
+}
+25%,75% {
+	opacity:0;
+}
+}@keyframes lightAnimate {
+	0%,50%,100% {
+	opacity:1;
+}
+25%,75% {
+	opacity:0;
+}
+}/*闪光灯动画结束*/
+/*底部淡入动画开始*/
+.boteasein {
+	-webkit-animation:boteaseinAnimate 1s ease .5s infinite;
+	animation:boteaseinAnimate 2s ease .5s infinite;
+}
+@-webkit-keyframes boteaseinAnimate {
+	0% {
+	-webkit-transform:translateY(200px);
+	opacity:0;
+}
+100% {
+	-webkit-transform:translateY(0px);
+	opacity:1;
+}
+}@keyframes boteaseinAnimate {
+	0% {
+	transform:translateY(200px);
+	opacity:0;
+}
+100% {
+	transform:translateY(0px);
+	opacity:1;
+}
+}/*底部淡入动画结束*/
+/*弹起上方进入动画开始*/
+.bounceinDown {
+	-webkit-animation:bounceinDownAnimate 1s ease .5s infinite;
+	animation:bounceinDownAnimate 2s ease .5s infinite;
+}
+@-webkit-keyframes bounceinDownAnimate {
+	0% {
+	-webkit-transform:translateY(-200px);
+}
+30% {
+	-webkit-transform:translateY(30px);
+}
+70% {
+	-webkit-transform:translateY(-10px);
+}
+100% {
+	-webkit-transform:translateY(0px);
+}
+}/*弹起上方进入动画结束*/
+/*旋转进入动画开始*/
+.rotateinleftbot {
+	-webkit-animation:rotateinleftbotAnimate 1s ease infinite;
+	animation:rotateinleftbotAnimate 2s ease infinite;
+}
+@-webkit-keyframes rotateinleftbotAnimate {
+	0% {
+	-webkit-transform-origin:left bottom;
+	-webkit-transform:rotate(-90deg);
+}
+100% {
+	-webkit-transform-origin:left bottom;
+	-webkit-transform:rotate(0deg);
+}
+}@keyframes rotateinleftbotAnimate {
+	0% {
+	transform-origin:left bottom;
+	transform:rotate(-90deg);
+}
+100% {
+	transform-origin:left bottom;
+	transform:rotate(0deg);
+}
+}/*旋转进入动画结束*/
+</style>
+</head>
+<body>
+<!--闪光灯动画开始-->
+<div class="light">闪光灯动画</div>
+<!--底部淡入动画开始-->
+<div class="boteasein">底部淡入动画</div>
+<!--弹起上方进入动画开始-->
+<div class="bounceinDown">弹起上方进入</div>
+<!--左下角进入动画开始-->
+<div class="rotateinleftbot">左下角进入</div><script>
+</script>
+</body>
+</html>

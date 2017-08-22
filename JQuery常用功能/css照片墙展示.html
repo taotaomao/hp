@@ -1,0 +1,80 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CSS照片墙-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<style>
+@charset "utf-8";
+	body {
+	background:gainsboro;
+}
+.div_pic {
+	width:900px;
+	height:450px;
+	margin:60px auto;
+}
+.p {
+	/*内边距*/
+	padding:10px 10px 10px;
+	background:white;
+	/*背景*/
+	/*左移，下移，虚化*/
+	box-shadow:5px 5px 4px rgba(50,50,50,0.5);
+	width:150px;
+	/*相对定位*/
+	position:relative;
+}
+/*每张图片倾斜角度*/
+.p1 {
+	transform:rotate(-5deg);
+}
+.p2 {
+	transform:rotate(9deg);
+}
+.p3 {
+	transform:rotate(14deg);
+}
+.p1 {
+	transform:rotate(2deg);
+}
+.p4 {
+	transform:rotate(-3deg);
+}
+.p5 {
+	transform:rotate(8deg);
+}
+.p6 {
+	transform:rotate(2deg);
+}
+.p7 {
+	transform:rotate(-1deg);
+}
+.p8 {
+	transform:rotate(1deg);
+}
+.p9 {
+	transform:rotate(-5deg);
+}
+.div_pic img:hover {
+	/*旋转角度变回0*/
+	transform:rotate(0deg) scale(1.5);
+	z-index:9;
+}
+</style>
+</head>
+<body>
+<div class="div_pic">
+    <img class="p p1" src="http://www.jq22.com/img/cs/500x500-1.png">
+    <img class="p p2" src="http://www.jq22.com/img/cs/500x500-2.png">
+    <img class="p p3" src="http://www.jq22.com/img/cs/500x500-3.png">
+    <img class="p p4" src="http://www.jq22.com/img/cs/500x500-4.png">
+    <img class="p p5" src="http://www.jq22.com/img/cs/500x500-5.png">
+    <img class="p p6" src="http://www.jq22.com/img/cs/500x500-6.png">
+    <img class="p p6" src="http://www.jq22.com/img/cs/500x500-7.png">
+    <img class="p p8" src="http://www.jq22.com/img/cs/500x500-8.png">
+    <img class="p p9" src="http://www.jq22.com/img/cs/500x500-9.png">
+</div><script>
+</script>
+</body>
+</html>

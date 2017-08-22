@@ -1,0 +1,56 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>全选反选案例-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<style>
+ul {
+	list-style:none;
+}
+</style>
+</head>
+<body>
+<ul>
+    <li><input type="checkbox" name="love[]">你好1</li>
+    <li><input type="checkbox" name="love[]">你好2</li>
+    <li><input type="checkbox" name="love[]">你好3</li>
+    <li><input type="checkbox" name="love[]">你好4</li>
+    <li><input type="checkbox" name="love[]">你好5</li>
+    <li>
+        <a href="javascript:qx()">全选</a>
+        <a href="javascript:bx()">全不选</a>
+        <a href="javascript:fx()">反选</a>
+    </li>
+</ul><script>
+// 找到 name = love[]  的像
+var Love = document.getElementsByName('love[]');
+
+function qx() {
+    //分别给没一个对象的集合，选中
+    for (i = 0; i < Love.length; i++) {
+        Love[i].checked = true;
+    }
+
+}
+
+function bx() {
+    for (i = 0; i < Love.length; i++) {
+        Love[i].checked = false;
+    }
+
+}
+
+function fx() {
+    for (i = 0; i < Love.length; i++) {
+
+        if (Love[i].checked == true) {
+            Love[i].checked = false;
+        } else {
+            Love[i].checked = true;
+        }
+    }
+
+}</script>
+</body>
+</html>

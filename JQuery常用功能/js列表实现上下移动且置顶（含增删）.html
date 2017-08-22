@@ -1,0 +1,136 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jquery列表操作-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
+<style>
+       .active{
+            background: #ccc;
+        }</style>
+</head>
+<body>
+<span>
+		<button>全选</button>
+		<button>不选</button>
+		<button>反选</button>
+		<button>删除</button>
+	</span>
+<div id="main">
+    <p>
+        <input type="checkbox">
+        <span class="nav">用玻璃做个椒盐饼？这是新技术展示</span>
+        <a href="javascript:;" class="up" javascript:;="">上移</a>
+        <a href="javascript:;" class="down">下移</a>
+        <a href="javascript:;" class="top">置顶</a>
+        <a href="javascript:;" class="bottom">置底</a>
+        <a href="javascript:;" class="delete">删除</a>
+    </p>
+    <p>
+        <input type="checkbox">
+        <span class="nav">为什么迷信也是民俗的研究对象之一？</span>
+        <a href="javascript:;" class="up">上移</a>
+        <a href="javascript:;" class="down">下移</a>
+        <a href="javascript:;" class="top">置顶</a>
+        <a href="javascript:;" class="bottom">置底</a>
+        <a href="javascript:;" class="delete">删除</a>
+    </p>
+    <p>
+        <input type="checkbox">
+        <span class="nav">地铁会被暴雨淹没吗？如何自救？</span>
+        <a href="javascript:;" class="up">上移</a>
+        <a href="javascript:;" class="down">下移</a>
+        <a href="javascript:;" class="top">置顶</a>
+        <a href="javascript:;" class="bottom">置底</a>
+        <a href="javascript:;" class="delete">删除</a>
+    </p>
+    <p>
+        <input type="checkbox">
+        <span class="nav">如何优雅地成为德意志古典哲学的追随者</span>
+        <a href="javascript:;" class="up">上移</a>
+        <a href="javascript:;" class="down">下移</a>
+        <a href="javascript:;" class="top">置顶</a>
+        <a href="javascript:;" class="bottom">置底</a>
+        <a href="javascript:;" class="delete">删除</a>
+    </p>
+    <p>
+        <input type="checkbox">
+        <span class="nav">什么？你把瓷器上的图案抹掉了?</span>
+        <a href="javascript:;" class="up">上移</a>
+        <a href="javascript:;" class="down">下移</a>
+        <a href="javascript:;" class="top">置顶</a>
+        <a href="javascript:;" class="bottom">置底</a>
+        <a href="javascript:;" class="delete">删除</a>
+    </p>
+</div><script>
+ $(function() {
+     //上移
+     var $Up = $(".up");
+     $Up.click(function() {
+         var $oP = $(this).parents("p");
+         $oP.fadeOut().fadeIn();
+         $oP.addClass("active").siblings().removeClass("active");
+         $oP.prev().before($oP); //prev() 获得匹配元素集合中每个元素紧邻的前一个同胞元素，通过选择器进行筛选是可选的。
+     }); //before() 方法在被选元素前插入指定的内容。  语法：$(selector).before(content)
+
+     //下移
+     var $Down = $(".down");
+     $Down.click(function() {
+         var $oP = $(this).parents("p");
+         $oP.fadeOut().fadeIn();
+         $oP.addClass("active").siblings().removeClass("active");
+         $oP.next().after($oP); //after() 方法在被选元素后插入指定的内容。
+     })
+
+     //置顶
+     var $Top = $(".top");
+     $Top.click(function() {
+         var $oP = $(this).parents("p");
+         $oP.fadeOut().fadeIn(); //fadeOut() 方法使用淡出效果来隐藏被选元素，假如该元素是隐藏的。// fadeIn() 用于淡入已隐藏的元素。
+         $oP.addClass("active").siblings().removeClass("active");
+         $("div").prepend($oP); //prepend() 方法在被选元素的开头（仍位于内部）插入指定内容。
+     });
+
+     //置底
+     var $Bottom = $(".bottom");
+     $Bottom.click(function() {
+         var $oP = $(this).parents("p");
+         $oP.fadeOut().fadeIn();
+         $oP.addClass("active").siblings().removeClass("active");
+         $("#main").append($oP);
+     })
+
+     //删除
+     var $Delete = $(".delete");
+     $Delete.click(function() {
+         var $oP = $(this).parents("p");
+         $oP.fadeOut().fadeIn();
+         $oP.addClass("active").siblings().removeClass("active");
+         $oP.remove();
+     });
+
+     //全选
+     $("button").eq(0).click(function() {
+         $("input").attr("checked", true); //attr() 方法设置或返回被选元素的属性值。
+     });
+
+     //不选
+     $("button").eq(1).click(function() {
+         $("input").attr("checked", false);
+     });
+
+     //反选
+     $("button").eq(2).click(function() {
+         $("input").each(function() {
+             $(this).attr("checked", !$(this).attr("checked")); //这个厉害了
+         })
+     });
+
+     //删除
+     $("button").eq(3).click(function() {
+         $("input[checked]").parents("p").remove(); //parents() 获得当前匹配元素集合中每个元素的祖先元素，使用选择器进行筛选是可选的。
+         //remove() 方法移除被选元素，包括所有文本和子节点。
+     })
+ })</script>
+</body>
+</html>

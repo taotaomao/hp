@@ -1,0 +1,82 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Canvas小风车-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<style>
+* {
+	margin:0px;
+	padding:0px;
+}
+body {
+	background-color:lightblue;
+}
+#mydiv > #myCanvas {
+	background-color:white;
+	border:solid 5px LightSalmon;
+}
+</style>
+</head>
+<body>
+<div id="mydiv">
+    <canvas id="myCanvas">
+		对不起，您的浏览器不支持HTML5，请升级浏览器至IE9、firefox或者谷歌浏览器！
+   </canvas>
+</div><script>
+var WINDOW_WIDTH = 300;
+var WINDOW_HEIGHT = 300;
+window.onload = function() {
+    var canvas = document.getElementById("myCanvas");
+    var context = canvas.getContext("2d");
+    canvas.width = WINDOW_WIDTH;
+    canvas.height = WINDOW_HEIGHT;
+    var num = 0;
+    setInterval(function() {
+        num++
+        rotate(context, num);
+    }, 10);
+
+}
+
+function rotate(cxt, num) {
+    cxt.clearRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+    cxt.save();
+    cxt.translate(150, 150);
+    cxt.rotate(num * Math.PI / 180);
+    draw(cxt);
+    cxt.restore();
+}
+
+function draw(cxt) {
+
+    cxt.beginPath();
+    cxt.fillStyle = "red";
+    cxt.moveTo(0, 0);
+    cxt.arcTo(100, -100, 0, -200, 100);
+    cxt.fill();
+    cxt.closePath();
+
+    cxt.beginPath();
+    cxt.fillStyle = "yellow";
+    cxt.moveTo(0, 0);
+    cxt.arcTo(100, 100, 200, 0, 100);
+    cxt.fill();
+    cxt.closePath();
+
+    cxt.beginPath();
+    cxt.fillStyle = "blue";
+    cxt.moveTo(0, 0);
+    cxt.arcTo(-100, 100, 0, 200, 100);
+    cxt.fill();
+    cxt.closePath();
+
+    cxt.beginPath();
+    cxt.fillStyle = "green";
+    cxt.moveTo(0, 0);
+    cxt.arcTo(-100, -100, -200, 0, 100);
+    cxt.fill();
+    cxt.closePath();
+}</script>
+</body>
+</html>

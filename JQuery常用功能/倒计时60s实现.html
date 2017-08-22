@@ -1,0 +1,39 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>js倒计时60s-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<style>
+.btn { 
+    width:120px;
+    height:40px;   
+    float:left;
+    color: white;
+    background-color: #3498db;
+    border-radius: 6px;
+    text-align: center;
+    text-decoration: none;
+
+}</style>
+</head>
+<body>
+<input type="button" class="btn" value="获取验证码" onclick="clickButton(this)"><script>
+function clickButton(obj){
+
+    var obj = $(obj);
+    obj.attr("disabled","disabled");
+    var time = 60;
+    var set=setInterval(function(){
+    obj.val(--time+"(s)");
+    }, 1000);
+
+    setTimeout(function(){
+    obj.attr("disabled",false).val("重新获取验证码");
+    clearInterval(set);
+    }, 60000);
+}
+
+</script>
+</body>
+</html>

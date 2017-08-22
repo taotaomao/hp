@@ -1,0 +1,127 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>tab切换显示不同内容-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<style>
+* {
+	margin:0;
+	padding:0;
+}
+body {
+	font-family:"Microsoft YaHei";
+}
+li {
+	list-style:none;
+}
+.clearfix:before,.clearfix:after {
+	content:"";
+	display:table;
+}
+.clearfix:after {
+	clear:both;
+}
+.clearfix {
+	clear:both;
+	*zoom:1;
+}
+.show {
+	display:block!important;
+}
+.box {
+	width:400px;
+	margin:20px auto;
+	border:1px solid #dcdcdc;
+}
+.ul_list {
+	width:100%;
+	height:35px;
+	border-bottom:1px solid #dcdcdc;
+}
+.ul_list li {
+	float:left;
+	width:25%;
+	line-height:35px;
+	text-align:center;
+	border-left:1px solid #dcdcdc;
+	box-sizing:border-box;
+	cursor:pointer;
+}
+.ul_list li.active {
+	background:#00a1ea;
+	color:#fff;
+}
+.div_box {
+	padding:20px;
+}
+.div_box .div_list {
+	display:none;
+}
+.div_box .div_list ul li {
+	line-height:30px;
+	font-size:14px;
+	cursor:pointer;
+}
+.div_box .div_list ul li:hover {
+	color:#00a1ea;
+}
+</style>
+</head>
+<body>
+<div class="box">
+    <ul class="ul_list clearfix">
+        <li class="active">香蕉</li>
+        <li>苹果</li>
+        <li>西瓜</li>
+        <li>草莓</li>
+    </ul>
+    <div class="div_box">
+        <div class="div_list" style="display:block;">
+            <ul>
+                <li>香蕉香蕉香蕉香蕉香蕉</li>
+                <li>香蕉香蕉香蕉香蕉香蕉</li>
+                <li>香蕉香蕉香蕉香蕉香蕉</li>
+                <li>香蕉香蕉香蕉香蕉香蕉</li>
+                <li>香蕉香蕉香蕉香蕉香蕉</li>
+            </ul>
+        </div>
+        <div class="div_list">
+            <ul>
+                <li>苹果苹果苹果苹果苹果苹果苹果苹果苹果苹果苹果</li>
+                <li>苹果苹果苹果苹果苹果蕉</li>
+                <li>苹果苹果苹果苹果苹果</li>
+                <li>香苹果苹果苹果苹果苹果香蕉香蕉</li>
+                <li>香苹果苹果苹果苹果苹果苹果蕉</li>
+            </ul>
+        </div>
+        <div class="div_list">
+            <ul>
+                <li>西瓜西瓜西瓜西瓜西瓜</li>
+                <li>西瓜西瓜西瓜西瓜西瓜西瓜西瓜西瓜</li>
+                <li>西瓜西瓜西瓜西瓜西瓜西瓜蕉</li>
+                <li>西瓜西瓜西瓜西瓜西瓜西瓜蕉</li>
+                <li>西瓜西瓜西瓜西瓜西瓜西瓜</li>
+            </ul>
+        </div>
+        <div class="div_list">
+            <ul>
+                <li>草莓</li>
+                <li>草莓草莓草莓草莓草莓</li>
+                <li>草莓草莓草莓草莓草莓香蕉香蕉香蕉香蕉</li>
+                <li>香蕉香蕉草莓草莓草莓香蕉香蕉</li>
+                <li>香蕉草莓草莓草莓草莓草莓香蕉香蕉香蕉</li>
+            </ul>
+        </div>
+    </div>
+</div><script>
+$(function() {
+    $('.box .ul_list li').on('click', function() {
+        $(this).addClass('active').siblings('li').removeClass('active');
+        //获取当前li的索引
+        var n = $(this).index();
+        $('.div_box .div_list').eq(n).show().siblings('.div_list').hide();
+    });
+});</script>
+</body>
+</html>

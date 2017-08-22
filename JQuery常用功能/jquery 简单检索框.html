@@ -1,0 +1,104 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery简单的检索框-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<style>
+        * {
+	margin:0;
+	padding:0;
+}
+ul li {
+	list-style:none;
+}
+a {
+	text-decoration:none;
+}
+.box {
+	width:600px;
+}
+.box1 {
+	width:300px;
+	height:auto;
+	margin:30px 70px;
+	float:left;
+	position:relative;
+}
+.box1 .inputCont {
+	width:200px;
+	height:36px;
+	line-height:36px;
+	position:absolute;
+	top:0;
+	left:0;
+}
+.box1 #dynamicUl {
+	width:200px;
+	height:auto;
+	border:1px solid yellow;
+	position:absolute;
+	left:0;
+	top:40px;
+}
+.box1 #dynamicUl li {
+	width:200px;
+	height:36px;
+	line-height:36px;
+	border-bottom:1px solid #ccc;
+}
+.box2 {
+	width:200px;
+	height:auto;
+	float:right;
+	margin-top:-30px;
+}
+.box2 #data {
+	width:200px;
+	height:auto;
+}
+</style>
+</head>
+<body>
+<div class="box">
+    <div class="box1">
+        <input type="text" placeholder="请输入手机号" class="inputCont">
+        <ul id="dynamicUl">
+        </ul>
+    </div>
+    <div class="box2">
+        <h3>这个相当于数据库</h3>
+        <ul id="data">
+            <li>1</li>
+            <li>22</li>
+            <li>123</li>
+            <li>13571</li>
+            <li>111</li>
+        </ul>
+    </div>
+</div><script>
+$(function() {
+    var arr = [];
+    $('#data').children().each(function() {
+        var liText = $(this).text();
+        arr.push(liText);
+    });
+    $('.inputCont').on('keyup', function() {
+        $('#dynamicUl').find("li").remove();
+        $('#dynamicUl').show();
+        var inputCont = $('.inputCont').val();
+        for (var i = 0; i < arr.length; i++) {
+            if ((arr[i].indexOf(inputCont)) != -1) {
+                $('#dynamicUl').append($('<li onclick="removeUl(this)">' + arr[i] + '</li>'));
+            }
+        }
+    })
+    $('#dynamicUl').on('click', 'li', function() {
+        $('.inputCont').val($(this).text());
+    })
+    removeUl = function() {
+        $('#dynamicUl').hide();
+    }
+})</script>
+</body>
+</html>

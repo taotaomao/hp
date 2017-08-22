@@ -1,0 +1,99 @@
+*{
+	padding: 0;
+	margin: 0 auto;
+	list-style: none;
+}
+.img{
+    position: absolute;
+    z-index: 200;
+}
+.img {
+	margin-left: -88px;
+}
+.content{
+	width:1318px;
+	height: 1000px;
+	background: #f7f8fa;
+	position: relative;
+}
+.leftText>div{
+	margin-left: -50px;
+}
+.text1{
+	width: 900px;
+    height: 200px;
+    background: #fff;
+    border: 1px solid #e9eaef;
+    position: absolute;
+    top: 295px;
+}
+
+.text2{
+	width: 900px;
+    height: 200px;
+    background: #fff;
+    border: 1px solid #e9eaef;
+    position: absolute;
+    top: 520px;
+}
+.text3{
+	width: 900px;
+    height: 200px;
+    background: #fff;
+    border: 1px solid #e9eaef;
+    position: absolute;
+    top: 745px;
+}
+.search{
+	width: 320px;
+	height: 50px;
+}
+.search input{
+	position: absolute;
+    top: 295px;
+    left: 130px;
+    border: 1px solid #e9eaef;
+    background: #fff;
+}
+.search .sText{
+	padding-left: 15px;
+	width:250px;
+    height: 40px;
+}
+.search .sButton{
+	width:40px;
+    height: 40px;
+    background: url("../images/sButton.jpg") no-repeat;
+    margin-left: 249px;
+    border-left:0;
+}
+.recommend{
+	position: absolute;
+    top: 355px;
+    left: 130px;
+    border: 1px solid #e9eaef;
+   /* float: right;*/
+    background: #fff;
+    width: 290px;
+    height: 365px;
+    text-align: center;
+}
+.recommend h4{
+	line-height: 35px;
+	border-bottom: 1px solid #e9eaef;
+}
+.buttom{
+	position: absolute;
+    top: 745px;
+    left: 130px;
+    border: 1px solid #e9eaef;
+    /*float: right;*/
+    background: #fff;
+    width: 290px;
+    height: 200px;
+    text-align: center;
+}
+.buttom h4{
+	border-bottom: 1px solid #e9eaef;
+	line-height: 35px;
+}
